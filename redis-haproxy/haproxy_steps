@@ -1,0 +1,26 @@
+yum install centos-release-scl
+yum install rh-haproxy18-haproxy rh-haproxy18-haproxy-syspaths
+ls -l /etc/haproxy/
+
+
+# Below two steps not required for fresh installation
+mv /etc/opt/rh/rh-haproxy18/haproxy/haproxy.cfg /etc/opt/rh/rh-haproxy18/haproxy/haproxy.cfg.original
+cp /etc/haproxy/haproxy.cfg.rpmsave /etc/opt/rh/rh-haproxy18/haproxy/haproxy.cfg
+mv /etc/opt/rh/rh-haproxy18/haproxy/haproxy.cfg.original /etc/opt/rh/rh-haproxy18/haproxy/haproxy.cfg
+
+systemctl start rh-haproxy18-haproxy
+systemctl status rh-haproxy18-haproxy
+cat /etc/opt/rh/rh-haproxy18/haproxy/haproxy.cfg
+systemctl stop rh-haproxy18-haproxy
+vim /etc/opt/rh/rh-haproxy18/haproxy/haproxy.cfg
+systemctl start rh-haproxy18-haproxy
+systemctl status rh-haproxy18-haproxy
+cat /etc/opt/rh/rh-haproxy18/haproxy/haproxy.cfg
+
+Take redis config from below:
+https://github.com/dijeesh/redis-sentinel-cluster-setup.git
+
+Take sentinel config from below:
+https://github.com/seanmcgary/redis-cluster-example.git
+
+
